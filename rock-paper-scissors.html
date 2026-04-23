@@ -4,93 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-<script>
-
-function getComputerChoice(){
-
-let randomNumber = Math.floor(Math.random() * 3);
-
-if (randomNumber === 0) {
-return "rock";
-} 
-
-else if (randomNumber === 1){
-return "paper";
-}
-
-else { 
-return "scissors";
-}
-}
-
-function getHumanChoice() {
- let humanChoice = "";
-
-while  (humanChoice !== "rock" && humanChoice !== "paper" && humanChoice !== "scissors") {
-    
-    let rawInput = prompt("Choose rock, paper or scissors");
-
-    // Check if the user hit 'Cancel'
-    if (rawInput === null) {
-      alert("Please don't cancel! The game needs your choice.");
-      continue; 
-    }
-
-   humanChoice = rawInput.toLowerCase().trim();
- }
- 
-  return humanChoice;
-}
-
-
-
-
-function playGame(){
-    let humanScore = 0;
-    let computerScore = 0;
-    
-    for (let i = 0; i < 5; i++){
-
-    
-    let computerChoice = getComputerChoice();
-    console.log("Computer chooses " + computerChoice);
-
-    let humanChoice = getHumanChoice();
-    console.log("Human chooses " + humanChoice);
-
-
-            function playRound(human, computer){
-                
-            if (human === computer){
-            console.log("It's a tie");
-            return "tie";    }
-
-            else if ((human === "rock" && computer === "scissors") 
-                || (human === "scissors" && computer === "paper") || 
-                (human === "paper" && computer === "rock")) {
-                console.log("You win!"); 
-                humanScore++;
-                return "humanWon";
-                }
-
-            else {
-                console.log("Sorry, computer won.");
-                computerScore++;
-                return "computerWon";}
-            }
-
-    let result = playRound(humanChoice, computerChoice);
-    console.log(humanScore , computerScore, result);
-    }
-}
-
-playGame();
-
-
-</script>
+<script src="script.js" defer></script>
+<link rel="stylesheet" href="style.css">
 
 </head>
 <body>
-    
+    <div class="content">
+        <div class="buttons"> 
+                <button id = "rockButton" class="button"><img src="rock.png">Rock</button> 
+                <button id = "paperButton" class="button"><img src="paper.png">Paper</button> 
+                <button id = "scissorsButton" class="button"><img src="scissors.png">Scissors</button> 
+        </div>
+    <h1 class="round-winner" id="result">The Winner Is...</h1>
+    <div class = "content"></div>
+        <div class="score-container">
+        <h2>Score</h2> 
+            <div class="score-board">
+            <div class="score-box">Player: <div class="score" id = "playerscore">0</div> </div>
+            <div class = "score-box">Computer: <div class="score" id = "computerscore">0</div> </div>
+            </div>
+        </div>
+    </div>
+    </div>
 </body>
 </html>
